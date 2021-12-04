@@ -1,0 +1,47 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        Scanner text = new Scanner(System.in);
+        System.out.println("plaintext: ");
+        String message = text.nextLine();
+        System.out.println("Rotation No.): ");
+        int number = text.nextInt();
+
+        String ciphertext = "";
+        char letters;
+
+        while (number < 1 || number > 25) {
+            System.out.println("not fit for this range");
+            number = text.nextInt();
+        }
+        if (number > 0 && number < 26) {
+            for (int i = 0; i < message.length(); i++) {
+                letters = message.charAt(i);
+                if (letters >= 'a' & letters <= 'z') {
+                    letters = (char) (letters + number);
+                    if (letters > 'z') {
+                        letters = (char) (letters + 'a' - 'z' - 1);
+                    }
+                    ciphertext = ciphertext + letters;
+                }
+                else if (letters >= 'A' & letters <='Z') {
+                    letters = (char) (letters + number);
+                    if (letters > 'Z') {
+                        letters = (char) (letters + 'A' - 'Z' - 1);
+                    }
+                    ciphertext = ciphertext + letters;
+                }
+                else {
+                    ciphertext = ciphertext + letters;
+                }
+            }
+            
+            System.out.println("ciphertext: " + ciphertext);
+        }
+    }
+}
